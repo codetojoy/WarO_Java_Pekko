@@ -14,7 +14,8 @@ WarO_Java_Pekko
 To Build:
 ---------
 
-* requires JDK 15
+* tested with Java 19
+* Gradle wrapper is 8.1
 
 useful commands:
 

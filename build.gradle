@@ -5,7 +5,7 @@ apply plugin: 'application'
 // console app
 // mainClassName = 'org.peidevs.waro.console.Main'
 
-// Akka framework
+// Pekko framework
 mainClassName = 'org.peidevs.waro.actor.Runner'
 
 repositories {
@@ -28,12 +28,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Akka
-    testImplementation 'org.apache.pekko:pekko-actor-testkit-typed_2.13:1.0.2'
-    testImplementation 'org.scalatestplus:junit-4-12_0.27:3.2.2.0'
+    // testImplementation 'org.apache.pekko:pekko-actor-testkit-typed_2.13:1.0.2'
+    // testImplementation 'org.scalatestplus:junit-4-12_0.27:3.2.2.0'
 }
 
 // ----------- compiler
 
+/*
 sourceCompatibility = 15
 
 tasks.withType(JavaCompile) {
@@ -47,6 +48,7 @@ tasks.withType(Test) {
 tasks.withType(JavaExec) {
     jvmArgs += "--enable-preview"
 }
+*/
 
 // ----------- runtime
 
@@ -60,4 +62,10 @@ installDist {
 
 run {
     standardInput = System.in
+}
+
+test {
+    testLogging {
+        events "passed", "failed"
+    }
 }
