@@ -25,10 +25,10 @@ dependencies {
     implementation 'commons-io:commons-io:2.8.0'
     implementation 'org.apache.commons:commons-lang3:3.11'
 
-    testImplementation 'junit:junit:4.13.2'
-    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.8.2'
+    testCompileOnly 'junit:junit:4.13.2'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.9.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // Akka
     // testImplementation 'org.apache.pekko:pekko-actor-testkit-typed_2.13:1.0.2'
     // testImplementation 'org.scalatestplus:junit-4-12_0.27:3.2.2.0'
 }
@@ -48,7 +48,7 @@ run {
 }
 
 test {
-    useJUnitPlatform()
+    // useJUnitPlatform()
 
     testLogging {
         events "passed", "failed"

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./gradlew -q test 
+./gradlew test 
 
