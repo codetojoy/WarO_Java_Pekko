@@ -25,30 +25,13 @@ dependencies {
     implementation 'commons-io:commons-io:2.8.0'
     implementation 'org.apache.commons:commons-lang3:3.11'
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.8.2'
 
     // Akka
     // testImplementation 'org.apache.pekko:pekko-actor-testkit-typed_2.13:1.0.2'
     // testImplementation 'org.scalatestplus:junit-4-12_0.27:3.2.2.0'
 }
-
-// ----------- compiler
-
-/*
-sourceCompatibility = 15
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs += '--enable-preview'
-}
-
-tasks.withType(Test) {
-    jvmArgs += "--enable-preview"
-}
-
-tasks.withType(JavaExec) {
-    jvmArgs += "--enable-preview"
-}
-*/
 
 // ----------- runtime
 
@@ -65,6 +48,8 @@ run {
 }
 
 test {
+    useJUnitPlatform()
+
     testLogging {
         events "passed", "failed"
     }
