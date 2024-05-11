@@ -1,0 +1,63 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+// console app
+// mainClassName = 'org.peidevs.waro.console.Main'
+
+// Akka framework
+mainClassName = 'org.peidevs.waro.actor.Runner'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // console app
+    implementation 'com.codepoetics:protonpack:1.16'
+    implementation 'com.google.guava:guava:24.1-jre'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'org.springframework:spring-context:5.2.5.RELEASE'
+
+    // Pekko
+    implementation 'org.apache.pekko:pekko-actor-typed_2.13:1.0.2'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'commons-io:commons-io:2.8.0'
+    implementation 'org.apache.commons:commons-lang3:3.11'
+
+    testImplementation 'junit:junit:4.12'
+
+    // Akka
+    testImplementation 'org.apache.pekko:pekko-actor-testkit-typed_2.13:1.0.2'
+    testImplementation 'org.scalatestplus:junit-4-12_0.27:3.2.2.0'
+}
+
+// ----------- compiler
+
+sourceCompatibility = 15
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '--enable-preview'
+}
+
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += "--enable-preview"
+}
+
+// ----------- runtime
+
+installDist.doFirst {
+    ant.delete(dir: project.stagingDir)
+}
+
+installDist {
+    into project.stagingDir
+}
+
+run {
+    standardInput = System.in
+}
